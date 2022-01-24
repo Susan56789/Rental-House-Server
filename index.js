@@ -12,13 +12,9 @@ const cors = require("cors");
 //import cors from 'cors';
 
 var corsOptions = {
-  origin: [
-    "http://localhost:4200",
-    "http://localhost:4000",
-    "http://localhost:3000",
-    "**",
-  ],
+  origin: "*",
   credentials: "include",
+  "Content-Type": "application/json",
 };
 
 app.use(cors(corsOptions));
