@@ -1,18 +1,18 @@
 function Houses() {
   let houses = [
     {
-      id: 1,
-      "house-no": 623,
-      "category-id": 4,
+      id: Math.floor(Math.random() * 1001),
+      house_no: 623,
+      house_type: "Bedsitter",
       description: "Sample",
-      price: 2500,
+      price: 7500,
     },
     {
-      id: 4,
-      "house-no": 630,
-      "category-id": 2,
+      id: Math.floor(Math.random() * 1001),
+      house_type: "One Bedroom",
+      house_no: 630,
       description: "Sample",
-      price: 3500,
+      price: 13000,
     },
   ];
 
