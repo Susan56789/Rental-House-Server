@@ -6,6 +6,7 @@ function Users() {
       username: "admin",
       email: "admin@yahoo.com",
       password: "admin123",
+      token: Math.floor(Math.random() * 1000),
     },
   ];
 
