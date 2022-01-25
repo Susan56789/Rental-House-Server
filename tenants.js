@@ -1,7 +1,7 @@
 function Tenants() {
   let tenants = [
     {
-      id: Math.floor(Math.random() * 10001),
+      id: 453566,
       firstname: "Alex",
       middlename: "W",
       lastname: "Kimani",
@@ -11,10 +11,10 @@ function Tenants() {
       monthly_rate: 2500,
       outstanding_balance: 0,
       last_payment: new Date(2020, 08, 03, 11, 30, 40),
-      date_in: new Date(2020, 07, 02, 13, 11, 47),
+      date_in: new Date(2020, 07, 02, 13, 11, 47).toLocaleString() + "",
     },
     {
-      id: Math.floor(Math.random() * 10001),
+      id: 345693,
       firstname: "Jane",
       middlename: "M",
       lastname: "Mwanza",
@@ -24,7 +24,7 @@ function Tenants() {
       monthly_rate: 7500,
       outstanding_balance: 0,
       last_payment: new Date(2020, 08, 03, 11, 30, 40),
-      date_in: new Date(2020, 07, 02, 13, 11, 47),
+      date_in: new Date(2020, 07, 02, 13, 11, 47).toLocaleString() + "",
     },
   ];
 

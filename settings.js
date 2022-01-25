@@ -1,7 +1,7 @@
 function Settings() {
   let settings = [
     {
-      id: Math.floor(Math.random() * 10001),
+      id: 3643807,
       name: "House Rental Management System",
       email: "info@yahoo.com",
       contact: "+254796456234",
