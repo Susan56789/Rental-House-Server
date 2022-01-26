@@ -14,7 +14,15 @@ function Users() {
       username: "suewairimu",
       email: "susanwairimu177@yahoo.com",
       password: "susan1234",
-      isAdmin: true,
+      isAdmin: false,
+    },
+    {
+      id: 3,
+      name: "Mary J",
+      username: "maryy",
+      email: "mary177@yahoo.com",
+      password: "mary1234",
+      isAdmin: false,
     },
   ];
 
