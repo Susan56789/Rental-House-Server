@@ -159,7 +159,7 @@ app.get("/verifyToken", function (req, res) {
       });
 
     // return 401 status if the userId does not match.
-    if (user.userId !== userData.userId) {
+    if (user.userId !== userData.id) {
       return res.status(401).json({
         error: true,
         message: "Invalid user.",
