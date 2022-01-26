@@ -22,6 +22,7 @@ var corsOptions = {
   origin: "*",
   credentials: "include",
   "Content-Type": "application/json",
+  Accept: "application/json",
 };
 
 // enable CORS
