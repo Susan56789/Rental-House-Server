@@ -10,8 +10,8 @@ function Users() {
     },
     {
       id: 2,
-      name: "SusanWairimu",
-      username: "SueWairimu",
+      name: "Susan Wairimu",
+      username: "suewairimu",
       email: "susanwairimu177@yahoo.com",
       password: "susan1234",
       isAdmin: true,
