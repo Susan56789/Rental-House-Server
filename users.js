@@ -6,6 +6,7 @@ function Users() {
       username: "admin",
       email: "admin@yahoo.com",
       password: "admin123",
+      isAdmin: true,
     },
   ];
 
