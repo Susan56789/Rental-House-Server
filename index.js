@@ -120,8 +120,6 @@ app.post("/user/login", (req, res) => {
 
   const Data = users();
 
-  console.log(Data);
-
   Data.map((userData) => {
     // return 400 status if username/password is not exist
     if (!user || !pwd) {
@@ -132,8 +130,6 @@ app.post("/user/login", (req, res) => {
     }
     // return 401 status if the credential is not match.
     if (user !== userData.username || pwd !== userData.password) {
-      console.log(user);
-      console.log(userData.username);
       return res.status(401).json({
         error: true,
         message: "Username or Password is wrong.",
