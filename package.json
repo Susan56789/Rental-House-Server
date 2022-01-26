@@ -1,5 +1,6 @@
 {
   "name": "rentalhouse-server",
+  "homepage": ".",
   "version": "1.0.0",
   "description": "Rental House API",
   "main": "index.js",
