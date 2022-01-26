@@ -9,9 +9,11 @@ function Tenants() {
       contact: "0776453267",
       house_id: 1,
       monthly_rate: 2500,
-      outstanding_balance: 0,
       last_payment: new Date(2020, 08, 03, 11, 30, 40).toLocaleString() + "",
       date_in: new Date(2020, 07, 02, 13, 11, 47).toLocaleString() + "",
+      invoice: 23435,
+      payable_months: 6,
+      paid_months: 4,
     },
     {
       id: 345693,
@@ -22,9 +24,11 @@ function Tenants() {
       contact: "07764535467",
       house_id: 14,
       monthly_rate: 7500,
-      outstanding_balance: 0,
       last_payment: new Date(2020, 08, 03, 11, 30, 40).toLocaleString() + "",
       date_in: new Date(2020, 07, 02, 13, 11, 47).toLocaleString() + "",
+      invoice: 23435,
+      payable_months: 6,
+      paid_months: 4,
     },
   ];
 
