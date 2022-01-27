@@ -5,11 +5,23 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const utils = require("./utils");
+var multer = require("multer");
+var upload = multer();
+
+const formidable = require("express-formidable");
 
 const app = express();
 
+app.set("view engine", "pug");
+app.set("views", "./views");
+
+// for parsing multipart/form-data
+app.use(upload.array());
+app.use(express.static("public"));
+
 // parse application/json
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 const PORT = process.env.PORT || 4000;
 
@@ -17,6 +29,8 @@ const PORT = process.env.PORT || 4000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
+
+app.use(formidable());
 
 var corsOptions = {
   origin: "*",
@@ -27,17 +41,6 @@ var corsOptions = {
 
 // enable CORS
 app.use(cors(corsOptions));
-
-// static user details
-/**
- * const userData = {
-  userId: "789789",
-  password: "123456",
-  name: "Susan Wairimu",
-  username: "SueWairimu",
-  isAdmin: true,
-};
- */
 
 /**
  * app.get("/", (req, res) => {
@@ -113,6 +116,17 @@ app.get("/users", async (req, res) => {
   let result = users(req.headers);
   res.send(result);
 });
+
+app.post("/users", (req, res) => {
+  const username = req.body.username;
+  const name = req.body.name;
+  const id = req.body.id;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  res.send(JSON.stringify(req.fields));
+});
+
 // validate the user credentials
 app.post("/user/login", (req, res) => {
   const user = req.body.username;
@@ -199,10 +213,11 @@ app.post("/user/login", (req, res) => {
 // request handlers
 app.get("/", (req, res) => {
   if (!req.user)
-    return res
-      .status(401)
-      .json({ success: false, message: "Invalid user to access it." });
-  res.send("Welcome to Rental House Management Server - " + req.user.name);
+    return res.status(200).json({
+      success: true,
+      message: "Welcome to Rental House Management Server",
+    });
+  res.send("Welcome to Rental House Management Server " + req.user.name);
 });
 
 app.listen(PORT, () =>
