@@ -5,19 +5,8 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const utils = require("./utils");
-var multer = require("multer");
-var upload = multer();
-
-const formidable = require("express-formidable");
 
 const app = express();
-
-app.set("view engine", "pug");
-app.set("views", "./views");
-
-// for parsing multipart/form-data
-app.use(upload.array());
-app.use(express.static("public"));
 
 // parse application/json
 app.use(bodyParser.json());
@@ -29,8 +18,6 @@ const PORT = process.env.PORT || 4000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
-
-app.use(formidable());
 
 var corsOptions = {
   origin: "*",
@@ -125,7 +112,7 @@ app.post("/users", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  res.send(JSON.stringify(req.fields));
+  res.send(JSON.stringify(req.body));
 });
 
 // validate the user credentials
