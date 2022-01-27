@@ -16,7 +16,7 @@ function generateToken(user) {
   };
 
   return jwt.sign(u, process.env.JWT_SECRET, {
-    expiresIn: 60 * 60 * 72, // expires in 72 hours
+    expiresIn: "5h", // expires in 5 hours
   });
 }
 

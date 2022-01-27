@@ -8,22 +8,6 @@ function Users() {
       password: "admin123",
       isAdmin: true,
     },
-    {
-      id: 2,
-      name: "Susan Wairimu",
-      username: "suewairimu",
-      email: "susanwairimu177@yahoo.com",
-      password: "susan1234",
-      isAdmin: false,
-    },
-    {
-      id: 3,
-      name: "Mary J",
-      username: "maryy",
-      email: "mary177@yahoo.com",
-      password: "mary1234",
-      isAdmin: false,
-    },
   ];
 
   return users;
