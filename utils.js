@@ -1,6 +1,7 @@
 // generate token using secret from process.env.JWT_SECRET
 var jwt = require("jsonwebtoken");
-const { token } = require("morgan");
+
+var JWT_SECRET = "ABCDEFGHIJ$123456789";
 
 // generate token and return it
 async function generateToken(user) {
@@ -13,10 +14,9 @@ async function generateToken(user) {
     name: user.name,
     username: user.username,
     email: user.email,
-    token,
   };
 
-  return await jwt.sign(u, process.env.JWT_SECRET, {
+  return await jwt.sign(u, JWT_SECRET, {
     expiresIn: "5h", // expires in 5 hours
   });
 }
