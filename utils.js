@@ -11,7 +11,6 @@ async function generateToken(user) {
     id: user.id,
     name: user.name,
     username: user.username,
-    isAdmin: user.isAdmin,
     email: user.email,
   };
 
@@ -32,7 +31,6 @@ function getCleanUser(user) {
       name: user.name,
       username: user.username,
       email: user.email,
-      isAdmin: user.isAdmin,
     };
   }
 }

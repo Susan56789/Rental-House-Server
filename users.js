@@ -6,7 +6,6 @@ function Users() {
       username: "admin",
       email: "susanwairimu177@yahoo.com",
       password: "admin123",
-      isAdmin: true,
     },
     {
       id: 45689,
@@ -14,7 +13,6 @@ function Users() {
       username: "suenimoh",
       email: "susanwairimu177@gmail.com",
       password: "sue1234",
-      isAdmin: true,
     },
   ];
 
