@@ -101,34 +101,37 @@ app.get("/users", async (req, res) => {
   res.send(result);
 });
 
-app.post("/user/signup", (req, res) => {
-  let Data = users();
+app.post("/users", (req, res) => {
+  let Data = users(req.headers);
 
-  try {
-    const { username, name, id, email, password } = req.body;
+  Data.map((userData) => {
+    try {
+      const { username, name, id, email, password } = req.body;
 
-    if (!(username && name && id && email && password)) {
-      res.status(401).json({
-        error: true,
-        message: "All input is required.",
-      });
-      if (!(username || name || id || email || password)) {
-        res.status(401).json({
+      if (!(username && name && id && email && password)) {
+        res.status(400).json({
           error: true,
           message: "All input is required.",
         });
       }
+      if (username === userData.username || email === userData.email) {
+        res.status().json({
+          error: true,
+          message: "User al.",
+        });
+      }
+    } catch (err) {
+      console.log(err);
     }
-  } catch (err) {
-    console.log(err);
-  }
+  });
 });
+
 // validate the user credentials
-app.post("/user/login/", async (req, res) => {
+app.post("/user/login", (req, res) => {
   const user = req.body.username;
   const pwd = req.body.password;
 
-  const Data = await users();
+  const Data = users();
 
   Data.map((userData) => {
     // return 400 status if username/password is not exist
@@ -146,7 +149,7 @@ app.post("/user/login/", async (req, res) => {
       });
     }
     // generate token
-    const token = utils.generateToken(userData);
+    const token = utils.generateToken(userData.id);
     // get basic user details
     const userObj = utils.getCleanUser(userData);
     // return the token along with user details

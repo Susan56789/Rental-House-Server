@@ -3,7 +3,7 @@ var jwt = require("jsonwebtoken");
 const { token } = require("morgan");
 
 // generate token and return it
-function generateToken(user) {
+async function generateToken(user) {
   //1. Don't use password and other sensitive fields
   //2. Use the information that are useful in other parts
   if (!user) return null;
