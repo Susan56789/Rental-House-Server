@@ -17,7 +17,7 @@ async function generateToken(user) {
   };
 
   return await jwt.sign(u, JWT_SECRET, {
-    expiresIn: "5h", // expires in 5 hours
+    expiresIn: 60 * 60 * 60 * 24,
   });
 }
 
