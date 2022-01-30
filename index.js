@@ -102,17 +102,28 @@ app.get("/users", async (req, res) => {
 });
 
 app.post("/users", (req, res) => {
-  const username = req.body.username;
-  const name = req.body.name;
-  const id = req.body.id;
-  const email = req.body.email;
-  const password = req.body.password;
+  let Data = users(req.headers);
 
-  res.send(JSON.stringify(username));
-  res.send(JSON.stringify(name));
-  res.send(JSON.stringify(id));
-  res.send(JSON.stringify(email));
-  res.send(JSON.stringify(password));
+  Data.map((userData) => {
+    try {
+      const { username, name, id, email, password } = req.body;
+
+      if (!(username && name && id && email && password)) {
+        res.status(400).json({
+          error: true,
+          message: "All input is required.",
+        });
+      }
+      if (username === userData.username || email === userData.email) {
+        res.status(400).json({
+          error: true,
+          message: "User already exists.",
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  });
 });
 
 // validate the user credentials

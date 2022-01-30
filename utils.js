@@ -15,9 +15,14 @@ async function generateToken(user) {
     email: user.email,
   };
 
-  return await jwt.sign(u, process.env.JWT_SECRET, {
-    expiresIn: 60 * 60 * 24, // expires in 24 hours
+  token = await jwt.sign(u, process.env.JWT_SECRET, {
+    expiresIn: "2h", // expires in 2 hours
   });
+
+  //save token
+  u.token = token;
+
+  return token;
 }
 
 // return basic user details
