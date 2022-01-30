@@ -101,7 +101,7 @@ app.get("/users", async (req, res) => {
   res.send(result);
 });
 
-app.post("/users", (req, res) => {
+app.post("/user/signup", (req, res) => {
   let Data = users(req.headers);
 
   Data.map((userData) => {
@@ -115,9 +115,9 @@ app.post("/users", (req, res) => {
         });
       }
       if (username === userData.username || email === userData.email) {
-        res.status().json({
+        res.status(401).json({
           error: true,
-          message: "User al.",
+          message: "User already exists",
         });
       }
     } catch (err) {
