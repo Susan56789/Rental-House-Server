@@ -31,9 +31,6 @@ var corsOptions = {
   "Content-Type": "application/json",
   Accept: "application/json",
   "Access-Control-Allow-Origin": "*",
-  headers: {
-    Authorization: "Bearer" + token,
-  },
 };
 
 // enable CORS
