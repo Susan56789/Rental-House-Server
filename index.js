@@ -102,10 +102,10 @@ app.get("/users", async (req, res) => {
 });
 
 app.post("/user/signup", (req, res) => {
+  let Data = users();
+
   try {
     const { username, name, id, email, password } = req.body;
-
-    res.send(req.body);
 
     if (!(username && name && id && email && password)) {
       res.status(401).json({
@@ -113,7 +113,7 @@ app.post("/user/signup", (req, res) => {
         message: "All input is required.",
       });
       if (!(username || name || id || email || password)) {
-        res.status(400).json({
+        res.status(401).json({
           error: true,
           message: "All input is required.",
         });
@@ -124,11 +124,11 @@ app.post("/user/signup", (req, res) => {
   }
 });
 // validate the user credentials
-app.post("/user/login", async (req, res) => {
+app.post("/user/login", (req, res) => {
   const user = req.body.username;
   const pwd = req.body.password;
 
-  const Data = await users();
+  const Data = users();
 
   Data.map((userData) => {
     // return 400 status if username/password is not exist
@@ -191,7 +191,7 @@ app.post("/user/login", async (req, res) => {
     var token = req.headers["authorization"];
     if (!token) return next(); //if no token, continue
 
-    token = token.replace("Bearer ", "scdtt03dst5356yirfv");
+    token = token.replace("Bearer ", "");
     jwt.verify(token, process.env.JWT_SECRET, function (err, user) {
       if (err) {
         return res.status(401).json({
