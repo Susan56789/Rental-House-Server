@@ -31,11 +31,13 @@ var corsOptions = {
   "Content-Type": "application/json",
   Accept: "application/json",
   "Access-Control-Allow-Origin": "*",
+  headers: {
+    Authorization: "Bearer" + token,
+  },
 };
 
 // enable CORS
 app.use(cors(corsOptions));
-
 
 const category = require("./categories");
 
@@ -100,6 +102,7 @@ app.post("/tenants", (req, res) => {
 
 const users = require("./users");
 const morgan = require("morgan");
+const { token } = require("morgan");
 //Get user data
 app.get("/users", async (req, res) => {
   console.log("Users");
