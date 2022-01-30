@@ -124,11 +124,11 @@ app.post("/user/signup", (req, res) => {
   }
 });
 // validate the user credentials
-app.post("/user/login", (req, res) => {
+app.post("/user/login/", async (req, res) => {
   const user = req.body.username;
   const pwd = req.body.password;
 
-  const Data = users();
+  const Data = await users();
 
   Data.map((userData) => {
     // return 400 status if username/password is not exist
