@@ -114,14 +114,24 @@ app.post("/user/signup", (req, res) => {
           message: "All input is required.",
         });
       }
-      if (
-        username === userData.username ||
-        email === userData.email ||
-        id === userData.id
-      ) {
+
+      if (username === userData.username) {
         res.status(401).json({
           error: true,
-          message: "User already exists",
+          message: "Username already exists, choose a different one.",
+        });
+      }
+      if (email === userData.email) {
+        res.status(401).json({
+          error: true,
+          message: "Email already exists, Log in ?",
+        });
+      }
+
+      if (id === userData.id) {
+        res.status(401).json({
+          error: true,
+          message: "ID Number already exists, Log in ?",
         });
       }
 
