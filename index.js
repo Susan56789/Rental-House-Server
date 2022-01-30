@@ -107,18 +107,24 @@ app.post("/user/signup", (req, res) => {
   Data.map((userData) => {
     try {
       const { username, name, id, email, password } = req.body;
-      res.send(req.body);
-      if (!(username || name || id || email || password)) {
-        res.status(400).json({
+
+      if (!(username && name && id && email && password)) {
+        res.status(401).json({
           error: true,
           message: "All input is required.",
         });
       }
-      if (username === userData.username || email === userData.email) {
+      if (
+        username === userData.username ||
+        email === userData.email ||
+        id === userData.id
+      ) {
         res.status(401).json({
           error: true,
           message: "User already exists",
         });
+
+        res.send(req.body);
       }
     } catch (err) {
       console.log(err);
