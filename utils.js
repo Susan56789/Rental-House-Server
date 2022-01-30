@@ -19,9 +19,6 @@ async function generateToken(user) {
     expiresIn: "2h", // expires in 2 hours
   });
 
-  //save token
-  u.token = token;
-
   return token;
 }
 
