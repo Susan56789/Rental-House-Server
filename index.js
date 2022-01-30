@@ -148,11 +148,14 @@ app.post("/user/login", (req, res) => {
       });
     }
     // generate token
-    const token = utils.generateToken();
+    const token = utils.generateToken(userData);
     // get basic user details
     const userObj = utils.getCleanUser(userData);
     // return the token along with user details
-    return res.json({ user: userObj, token });
+    return res
+      .cookie("access-token", token)
+      .status(200)
+      .json({ user: userObj, token });
   });
 
   // verify the token and return it if it's valid
