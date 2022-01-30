@@ -102,8 +102,6 @@ app.get("/users", async (req, res) => {
 });
 
 app.post("/user/signup", (req, res) => {
-  let Data = users();
-
   try {
     const { username, name, id, email, password } = req.body;
 

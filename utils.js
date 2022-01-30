@@ -15,7 +15,7 @@ function generateToken(user) {
     email: user.email,
   };
 
-  token = jwt.sign(u.id, process.env.JWT_SECRET, {
+  token = await jwt.sign(u, process.env.JWT_SECRET, {
     expiresIn: "5h", // expires in 5 hours
   });
 
