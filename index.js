@@ -101,7 +101,7 @@ app.get("/users", async (req, res) => {
   res.send(result);
 });
 
-app.post("/users", (req, res) => {
+app.post("/user/signup", (req, res) => {
   let Data = users(req.headers);
 
   Data.map((userData) => {
