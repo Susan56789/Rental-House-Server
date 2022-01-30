@@ -149,7 +149,7 @@ app.post("/user/login", (req, res) => {
       });
     }
     // generate token
-    const token = utils.generateToken(userData);
+    const token = utils.generateToken(userData.id);
     // get basic user details
     const userObj = utils.getCleanUser(userData);
     // return the token along with user details

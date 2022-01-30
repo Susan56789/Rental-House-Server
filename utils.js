@@ -13,6 +13,7 @@ async function generateToken(user) {
     name: user.name,
     username: user.username,
     email: user.email,
+    token,
   };
 
   return await jwt.sign(u, process.env.JWT_SECRET, {
