@@ -1,5 +1,6 @@
 // generate token using secret from process.env.JWT_SECRET
 var jwt = require("jsonwebtoken");
+const { token } = require("morgan");
 
 // generate token and return it
 function generateToken(user) {
@@ -14,9 +15,11 @@ function generateToken(user) {
     email: user.email,
   };
 
-  return jwt.sign(u, process.env.JWT_SECRET, {
+  token = jwt.sign(u.id, process.env.JWT_SECRET, {
     expiresIn: "5h", // expires in 5 hours
   });
+
+  return token;
 }
 
 // return basic user details
