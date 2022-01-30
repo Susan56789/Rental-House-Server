@@ -102,30 +102,29 @@ app.get("/users", async (req, res) => {
 });
 
 app.post("/user/signup", (req, res) => {
-  let Data = users(req.headers);
+  let Data = users();
 
-  Data.map((userData) => {
-    try {
-      const { username, name, id, email, password } = req.body;
+  try {
+    const { username, name, id, email, password } = req.body;
 
-      if (!(username && name && id && email && password)) {
+    res.send(req.body);
+
+    if (!(username && name && id && email && password)) {
+      res.status(401).json({
+        error: true,
+        message: "All input is required.",
+      });
+      if (!(username || name || id || email || password)) {
         res.status(400).json({
           error: true,
           message: "All input is required.",
         });
       }
-      if (username === userData.username || email === userData.email) {
-        res.status(400).json({
-          error: true,
-          message: "User already exists.",
-        });
-      }
-    } catch (err) {
-      console.log(err);
     }
-  });
+  } catch (err) {
+    console.log(err);
+  }
 });
-
 // validate the user credentials
 app.post("/user/login", (req, res) => {
   const user = req.body.username;
