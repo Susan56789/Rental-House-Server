@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const utils = require("./utils");
 const cookieParser = require("cookie-parser");
-const logger = require("morgan");
 
 const app = express();
 
@@ -16,12 +15,8 @@ app.use(bodyParser.urlencoded());
 
 const PORT = process.env.PORT || 4000;
 
-app.use(logger("dev"));
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(express.json());
 
 app.use(cookieParser());
 
@@ -98,8 +93,7 @@ app.post("/tenants", (req, res) => {
 });
 
 const users = require("./users");
-const morgan = require("morgan");
-const { token } = require("morgan");
+
 //Get user data
 app.get("/users", async (req, res) => {
   console.log("Users");
