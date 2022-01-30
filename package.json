@@ -12,12 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "express-formidable": "^1.2.0",
     "express-handlebars": "^6.0.2",
     "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
     "multer": "^1.4.4",
     "node-env-run": "^4.0.2"
   },

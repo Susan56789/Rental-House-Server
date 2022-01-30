@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const utils = require("./utils");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
 const app = express();
 
@@ -14,10 +16,14 @@ app.use(bodyParser.urlencoded());
 
 const PORT = process.env.PORT || 4000;
 
+app.use(logger("dev"));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
+
+app.use(cookieParser());
 
 var corsOptions = {
   origin: "*",
@@ -30,11 +36,23 @@ var corsOptions = {
 // enable CORS
 app.use(cors(corsOptions));
 
-/**
- * app.get("/", (req, res) => {
-  res.send("Hello Welcome to Rental House Management Server. ");
+//catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  var err = new Error("Not Found");
+  err.status = 404;
+  next(err);
 });
- */
+
+//error handler
+app.use(function (err, req, res, next) {
+  //set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+
+  //render the error page
+  res.status(err.status || 500);
+  res.json({ error: err });
+});
 
 const category = require("./categories");
 
@@ -98,6 +116,7 @@ app.post("/tenants", (req, res) => {
 });
 
 const users = require("./users");
+const morgan = require("morgan");
 //Get user data
 app.get("/users", async (req, res) => {
   console.log("Users");
@@ -112,7 +131,11 @@ app.post("/users", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  res.send(JSON.stringify(req.body));
+  res.send(JSON.stringify(username));
+  res.send(JSON.stringify(name));
+  res.send(JSON.stringify(id));
+  res.send(JSON.stringify(email));
+  res.send(JSON.stringify(password));
 });
 
 // validate the user credentials
