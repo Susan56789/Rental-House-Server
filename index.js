@@ -123,9 +123,9 @@ app.post("/user/signup", (req, res) => {
           error: true,
           message: "User already exists",
         });
-
-        res.send(req.body);
       }
+
+      res.send(req.body);
     } catch (err) {
       console.log(err);
     }
