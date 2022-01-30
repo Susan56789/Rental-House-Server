@@ -152,10 +152,7 @@ app.post("/user/login", (req, res) => {
     // get basic user details
     const userObj = utils.getCleanUser(userData);
     // return the token along with user details
-    return res
-      .cookie("access-token", token)
-      .status(200)
-      .json({ user: userObj, token });
+    return res.json({ user: userObj, token });
   });
 
   // verify the token and return it if it's valid
