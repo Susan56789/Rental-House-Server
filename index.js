@@ -124,11 +124,11 @@ app.post("/user/signup", (req, res) => {
   }
 });
 // validate the user credentials
-app.post("/user/login", (req, res) => {
+app.post("/user/login", async (req, res) => {
   const user = req.body.username;
   const pwd = req.body.password;
 
-  const Data = users();
+  const Data = await users();
 
   Data.map((userData) => {
     // return 400 status if username/password is not exist
@@ -191,7 +191,7 @@ app.post("/user/login", (req, res) => {
     var token = req.headers["authorization"];
     if (!token) return next(); //if no token, continue
 
-    token = token.replace("Bearer ", "");
+    token = token.replace("Bearer ", "scdtt03dst5356yirfv");
     jwt.verify(token, process.env.JWT_SECRET, function (err, user) {
       if (err) {
         return res.status(401).json({

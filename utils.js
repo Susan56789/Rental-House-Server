@@ -15,11 +15,9 @@ function generateToken(user) {
     email: user.email,
   };
 
-  token = await jwt.sign(u, process.env.JWT_SECRET, {
+  return await jwt.sign(u, process.env.JWT_SECRET, {
     expiresIn: "5h", // expires in 5 hours
   });
-
-  return token;
 }
 
 // return basic user details
