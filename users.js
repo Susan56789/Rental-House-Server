@@ -1,11 +1,19 @@
 function Users() {
   let users = [
     {
-      id: 1,
-      name: "Administrator",
+      id: 2345,
+      name: "Susan",
       username: "admin",
-      email: "admin@yahoo.com",
+      email: "susanwairimu177@yahoo.com",
       password: "admin123",
+      isAdmin: true,
+    },
+    {
+      id: 45689,
+      name: "Wairimu",
+      username: "suenimoh",
+      email: "susanwairimu177@gmail.com",
+      password: "sue1234",
       isAdmin: true,
     },
   ];
