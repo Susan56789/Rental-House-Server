@@ -102,13 +102,13 @@ app.get("/users", async (req, res) => {
 });
 
 app.post("/user/signup", (req, res) => {
-  let Data = users(req.headers);
+  let Data = users();
 
   Data.map((userData) => {
     try {
       const { username, name, id, email, password } = req.body;
-
-      if (!(username && name && id && email && password)) {
+      res.send(req.body);
+      if (!(username || name || id || email || password)) {
         res.status(400).json({
           error: true,
           message: "All input is required.",
